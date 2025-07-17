@@ -1,15 +1,13 @@
-
 import axios from "axios";
 
 interface Post {
-  userId: number; 
+  userId: number;
   id: number;
   title: string;
   body: string;
 }
 
-async function fetchPosts() {
-  
+async function fetchPosts(): Promise<Post[]> { 
   const response = await axios.get<Post[]>(
     "https://jsonplaceholder.typicode.com/posts"
   );
@@ -17,7 +15,6 @@ async function fetchPosts() {
 }
 
 fetchPosts().then((posts) => {
-  
   console.log(posts[0].title);
   console.log(posts[0].body);
   console.log(posts[0].id);
